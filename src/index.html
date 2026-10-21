@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Pet Virtual - Interativo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="game-container">
+    <!-- Viewport do Cômodo -->
+    <div class="room-viewport room-quarto" id="roomViewport">
+      <div class="room-title" id="roomTitle">QUARTO</div>
+      
+      <!-- Chão do Cômodo -->
+      <div class="floor" id="roomFloor"></div>
+
+      <!-- O Pet -->
+      <div class="pet" id="pet">
+        <div class="eye eye-left">
+          <div class="pupil"></div>
+        </div>
+        <div class="eye eye-right">
+          <div class="pupil"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra de Navegação Inferior -->
+    <div class="nav-bar">
+      <button class="nav-btn" id="prevBtn">&#10094;</button>
+      <div class="nav-label">MUDAR CÔMODO</div>
+      <button class="nav-btn" id="nextBtn">&#10095;</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

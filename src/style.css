@@ -1,0 +1,194 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f0f12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Container Principal Quase Tela Cheia */
+.game-container {
+  width: calc(100vw - 40px);
+  height: calc(100vh - 40px);
+  max-width: 1200px;
+  max-height: 800px;
+  background: #18181c;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  border: 4px solid #2a2a35;
+}
+
+/* Área dos Cômodos */
+.room-viewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s ease;
+}
+
+/* Estilos de Cores dos Cômodos (Parede) */
+.room-quarto { background: linear-gradient(135deg, #2b2d42, #1d1e2c); }
+.room-sala { background: linear-gradient(135deg, #d8e2dc, #ffe5ec); }
+.room-cozinha { background: linear-gradient(135deg, #ffcad4, #b5e2fa); }
+.room-banheiro { background: linear-gradient(135deg, #e8e8e4, #d8f3dc); }
+
+/* Chão Específico de Cada Cômodo */
+.floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  box-shadow: inset 0 10px 15px rgba(0,0,0,0.15);
+  border-top: 4px solid rgba(0,0,0,0.1);
+  transition: background 0.4s ease;
+}
+
+.room-quarto .floor {
+  background: repeating-linear-gradient(90deg, #8d5b4c, #8d5b4c 30px, #784c3e 30px, #784c3e 60px);
+}
+.room-sala .floor {
+  background: repeating-linear-gradient(0deg, #cbb282, #cbb282 20px, #bfa675 20px, #bfa675 40px);
+}
+.room-cozinha .floor {
+  background: repeating-linear-gradient(45deg, #ffffff 0 25px, #d1d5db 25px 50px);
+}
+.room-banheiro .floor {
+  background: repeating-linear-gradient(0deg, #a8ded0 0 30px, #93cfc0 30px 60px);
+}
+
+/* Indicador do Nome do Cômodo */
+.room-title {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 3px 6px rgba(0,0,0,0.4);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Barra de Navegação Inferior */
+.nav-bar {
+  height: 70px;
+  background: #121215;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  border-top: 2px solid #27272a;
+  z-index: 10;
+}
+
+.nav-label {
+  color: #a1a1aa;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.nav-btn {
+  background: #27272a;
+  color: #fff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.nav-btn:hover {
+  background: #3f3f46;
+  transform: scale(1.08);
+}
+
+.nav-btn:active {
+  transform: scale(0.92);
+}
+
+/* O Pet (Bolinha) */
+.pet {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff70a6, #ff477e);
+  position: absolute;
+  cursor: grab;
+  box-shadow: 0 10px 25px rgba(255, 71, 126, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  touch-action: none;
+  z-index: 5;
+  transform-origin: top center; /* Fixa o eixo de rotação no topo para o efeito de pendurar */
+  transition: transform 0.08s ease-out;
+}
+
+/* Olhos e Pupilas Corrigidas */
+.eye {
+  position: absolute;
+  width: 18px;
+  height: 24px;
+  background: #ffffff;
+  border-radius: 50%;
+  top: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eye-left { left: 28px; }
+.eye-right { right: 28px; }
+
+.pupil {
+  width: 9px;
+  height: 12px;
+  background: #000000;
+  border-radius: 50%;
+}
+
+/* Estado: Segurando (Pêndulo Balançando pelo topo) */
+.pet.holding {
+  cursor: grabbing;
+  animation: pendulum 0.6s ease-in-out infinite alternate;
+}
+
+/* Estado: Achatadinho / Molenga (Impacto ou Clique) */
+.pet.squish {
+  transform: scale(1.35, 0.6) !important;
+  transform-origin: bottom center;
+}
+
+/* Animação do Pêndulo */
+@keyframes pendulum {
+  0% {
+    transform: scale(1.1) rotate(-15deg);
+  }
+  100% {
+    transform: scale(1.1) rotate(15deg);
+  }
+}
