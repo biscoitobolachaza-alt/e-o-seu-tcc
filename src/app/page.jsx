@@ -58,7 +58,7 @@ export default function Home() {
 
   const getFloorY = () => {
     if (!roomViewportRef.current || !petRef.current) return 300;
-    const floorHeight = 175;
+    const floorHeight = 82;
     return roomViewportRef.current.clientHeight - floorHeight - petRef.current.offsetHeight;
   };
 
@@ -237,33 +237,8 @@ export default function Home() {
   };
 
   return (
-    <main className="w-full h-screen relative flex flex-col overflow-hidden bg-[#f4f4f6] select-none border-[6px] border-[#333342] shadow-2xl">
+    <main className="w-full h-screen relative flex flex-col overflow-hidden bg-[#f4f4f6] select-none">
       
-      {/* Botões Superiores de Configurações e Skins */}
-      <div className="absolute top-4 left-4 z-50 flex gap-5">
-        <button
-          onClick={() => {
-            setShowConfig(!showConfig);
-            setShowSkins(false);
-          }}
-          className="w-16 h-16 bg-white hover:bg-gray-100 rounded-2xl shadow-xl flex items-center justify-center active:scale-95 transition-all text-3xl border border-black/10 cursor-pointer"
-          title="Configurações"
-        >
-          ⚙️
-        </button>
-
-        <button
-          onClick={() => {
-            setShowSkins(!showSkins);
-            setShowConfig(false);
-          }}
-          className="w-16 h-16 bg-white hover:bg-gray-100 rounded-2xl shadow-xl flex items-center justify-center active:scale-95 transition-all text-3xl border border-black/10 cursor-pointer"
-          title="Skins"
-        >
-          🎨
-        </button>
-      </div>
-
       {/* Modal Central de Configurações */}
       {showConfig && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs">
@@ -372,7 +347,7 @@ export default function Home() {
       {/* Área do Cômodo com Transição e Tela Preta de Fade */}
       <div
         ref={roomViewportRef}
-        className={`w-full h-full relative overflow-hidden ${room.wallBg}`}
+        className={`w-full flex-1 min-h-0 relative overflow-hidden ${room.wallBg}`}
         onMouseMove={handleMovePet}
         onMouseUp={handleStopDrag}
         onTouchMove={handleMovePet}
@@ -386,10 +361,10 @@ export default function Home() {
         />
 
         {/* Linha separadora entre parede e chão */}
-        <div className="absolute bottom-[175px] left-0 w-full h-[3px] bg-[#22222d] z-20"></div>
+        <div className="absolute bottom-[82px] left-0 w-full h-[3px] bg-[#22222d] z-20"></div>
 
         {/* Chão */}
-        <div className={`absolute bottom-[65px] left-0 w-full h-[110px] ${room.floorBg} z-10`}></div>
+        <div className={`absolute bottom-0 left-0 w-full h-[82px] ${room.floorBg} z-10`}></div>
 
         {/* Pet Virtual */}
         <div
