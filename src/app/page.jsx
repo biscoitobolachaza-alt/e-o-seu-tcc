@@ -364,7 +364,7 @@ export default function Home() {
         <div className="absolute bottom-[55px] left-0 w-full h-[3px] bg-[#22222d] z-20"></div>
 
         {/* Chão */}
-        <div className="absolute bottom-0 left-0 w-full h-[55px] z-10" style={{ backgroundColor: "#f2f2f4" }}></div>
+        <div className="absolute bottom-0 left-0 w-full h-[55px] z-10" style={{ backgroundColor: "#f2f2f4", borderTop: "1px solid #d6d6dc" }}></div>
 
         {/* Pet Virtual */}
         <div
@@ -379,6 +379,8 @@ export default function Home() {
       <Fotbar
         onPrev={() => handleRoomChange("prev")}
         onNext={() => handleRoomChange("next")}
+        onConfig={() => setShowConfig(true)}
+        onSkins={() => setShowSkins(true)}
         roomName={room.name}
       />
     </main>
