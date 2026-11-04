@@ -2,9 +2,15 @@
 
 import Image from "next/image";
 
-export default function Fotbar({ onPrev, onNext, roomName }) {
+export default function Fotbar({ onPrev, onNext, onConfig, onSkins, roomName }) {
   return (
     <div className="relative shrink-0 w-full h-[62px] flex items-center justify-between z-40" style={{ backgroundColor: "#171720", borderTop: "2px solid #2a2a38" }}>
+      {/* Atalhos de configuração e skins, mantidos na barra inferior */}
+      <div className="absolute left-4 flex items-center gap-3">
+        <button onClick={onConfig} aria-label="Abrir configurações" title="Configurações" className="w-10 h-10 rounded-lg bg-white/15 hover:bg-white/25 text-white text-xl flex items-center justify-center transition-colors">⚙</button>
+        <button onClick={onSkins} aria-label="Escolher skin" title="Escolher skin" className="w-10 h-10 rounded-lg bg-white/15 hover:bg-white/25 text-white text-xl flex items-center justify-center transition-colors">🎨</button>
+      </div>
+
       {/* Botão da Seta Esquerda */}
       <button
         onClick={onPrev}
