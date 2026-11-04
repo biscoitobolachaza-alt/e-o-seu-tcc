@@ -257,7 +257,7 @@ export default function Home() {
             setShowSkins(!showSkins);
             setShowConfig(false);
           }}
-          className="w-14 h-14 bg-white hover:bg-gray-100 rounded-2xl shadow-xl flex items-center justify-center active:scale-95 transition-all text-2xl border border-black/10 cursor-pointer"
+          className="w-16 h-16 bg-white hover:bg-gray-100 rounded-2xl shadow-xl flex items-center justify-center active:scale-95 transition-all text-3xl border border-black/10 cursor-pointer"
           title="Skins"
         >
           🎨
