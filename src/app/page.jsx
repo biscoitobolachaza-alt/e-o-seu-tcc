@@ -58,7 +58,7 @@ export default function Home() {
 
   const getFloorY = () => {
     if (!roomViewportRef.current || !petRef.current) return 300;
-    const floorHeight = 82;
+    const floorHeight = 55;
     return roomViewportRef.current.clientHeight - floorHeight - petRef.current.offsetHeight;
   };
 
@@ -361,10 +361,10 @@ export default function Home() {
         />
 
         {/* Linha separadora entre parede e chão */}
-        <div className="absolute bottom-[82px] left-0 w-full h-[3px] bg-[#22222d] z-20"></div>
+        <div className="absolute bottom-[55px] left-0 w-full h-[3px] bg-[#22222d] z-20"></div>
 
         {/* Chão */}
-        <div className={`absolute bottom-0 left-0 w-full h-[82px] ${room.floorBg} z-10`}></div>
+        <div className={`absolute bottom-0 left-0 w-full h-[55px] ${room.floorBg} z-10`}></div>
 
         {/* Pet Virtual */}
         <div
