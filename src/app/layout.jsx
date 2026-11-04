@@ -9,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
-      <body className="w-full h-screen overflow-hidden flex items-center justify-center bg-[#121216]">
+      <body className="w-full h-[100dvh] overflow-hidden block" style={{ backgroundColor: "#71dc4a" }}>
         {children}
       </body>
     </html>
