@@ -238,6 +238,30 @@ export default function Home() {
 
   return (
     <main className="w-full h-[100dvh] relative flex flex-col overflow-hidden select-none" style={{ backgroundColor: room.wallColor }}>
+      {/* Controles superiores: configurações e escolha de cor do pet */}
+      <div
+        className="absolute top-3 left-3 z-[60] flex items-center gap-2"
+        style={{ display: "flex", alignItems: "center", gap: "10px" }}
+      >
+        <button
+          type="button"
+          onClick={() => setShowConfig(true)}
+          aria-label="Abrir configurações"
+          title="Configurações"
+          style={{ width: 42, height: 42, borderRadius: 10, border: "1px solid rgba(255,255,255,.65)", background: "rgba(23,23,32,.88)", color: "#fff", fontSize: 23, cursor: "pointer", boxShadow: "0 2px 8px rgba(0,0,0,.22)" }}
+        >
+          ⚙️
+        </button>
+        <button
+          type="button"
+          onClick={() => setShowSkins(true)}
+          aria-label="Mudar cor do boneco"
+          title="Mudar cor do boneco"
+          style={{ width: 42, height: 42, borderRadius: 10, border: "1px solid rgba(255,255,255,.65)", background: "rgba(23,23,32,.88)", color: "#fff", fontSize: 23, cursor: "pointer", boxShadow: "0 2px 8px rgba(0,0,0,.22)" }}
+        >
+          🎨
+        </button>
+      </div>
       
       {/* Modal Central de Configurações */}
       {showConfig && (
@@ -379,8 +403,6 @@ export default function Home() {
       <Fotbar
         onPrev={() => handleRoomChange("prev")}
         onNext={() => handleRoomChange("next")}
-        onConfig={() => setShowConfig(true)}
-        onSkins={() => setShowSkins(true)}
         roomName={room.name}
       />
     </main>
