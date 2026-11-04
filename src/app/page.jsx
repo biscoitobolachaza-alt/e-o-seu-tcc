@@ -4,10 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import Fotbar from "@/components/Fotbar";
 
 const ROOMS = [
-  { id: "sala", name: "sala", wallBg: "bg-[#71dc4a]", floorBg: "bg-[#55b236]" },
-  { id: "quarto", name: "quarto", wallBg: "bg-[#9d47e0]", floorBg: "bg-[#7231a6]" },
-  { id: "cozinha", name: "cozinha", wallBg: "bg-[#f28e3b]", floorBg: "bg-[#c46d23]" },
-  { id: "banheiro", name: "banheiro", wallBg: "bg-[#6ab2ff]", floorBg: "bg-[#3d8be6]" },
+  { id: "sala", name: "sala", wallColor: "#71dc4a" },
+  { id: "quarto", name: "quarto", wallColor: "#9d47e0" },
+  { id: "cozinha", name: "cozinha", wallColor: "#f28e3b" },
+  { id: "banheiro", name: "banheiro", wallColor: "#6ab2ff" },
 ];
 
 const SKINS = [
@@ -237,7 +237,7 @@ export default function Home() {
   };
 
   return (
-    <main className="w-full h-screen relative flex flex-col overflow-hidden bg-[#f4f4f6] select-none">
+    <main className="w-full h-[100dvh] relative flex flex-col overflow-hidden select-none" style={{ backgroundColor: room.wallColor }}>
       
       {/* Modal Central de Configurações */}
       {showConfig && (
@@ -347,7 +347,7 @@ export default function Home() {
       {/* Área do Cômodo com Transição e Tela Preta de Fade */}
       <div
         ref={roomViewportRef}
-        className={`w-full flex-1 min-h-0 relative overflow-hidden ${room.wallBg}`}
+        className="w-full flex-1 min-h-0 relative overflow-hidden" style={{ backgroundColor: room.wallColor }}
         onMouseMove={handleMovePet}
         onMouseUp={handleStopDrag}
         onTouchMove={handleMovePet}
@@ -364,7 +364,7 @@ export default function Home() {
         <div className="absolute bottom-[55px] left-0 w-full h-[3px] bg-[#22222d] z-20"></div>
 
         {/* Chão */}
-        <div className={`absolute bottom-0 left-0 w-full h-[55px] ${room.floorBg} z-10`}></div>
+        <div className="absolute bottom-0 left-0 w-full h-[55px] z-10" style={{ backgroundColor: "#f2f2f4" }}></div>
 
         {/* Pet Virtual */}
         <div
