@@ -1,5 +1,8 @@
 
-import { FLOOR_HEIGHT, PET_SIZE } from "@/constants/gameConfig";
+"use client";
+
+import { FLOOR_HEIGHT } from "@/constants/gameConfig";
+import Pet from "@/components/Pet";
 
 export default function RoomScene({
   room,
@@ -9,7 +12,10 @@ export default function RoomScene({
   handleStartDrag,
   handleMovePet,
   handleStopDrag,
+  onPetClick,
+  interactionKey,
   isFading,
+  lightsOff,
 }) {
   return (
     <div
@@ -23,15 +29,6 @@ export default function RoomScene({
       onPointerUp={handleStopDrag}
       onPointerCancel={handleStopDrag}
     >
-      {/* Transição entre cômodos */}
-      <div
-        className={`
-          absolute inset-0 bg-black z-30
-          pointer-events-none transition-opacity duration-300
-          ${isFading ? "opacity-100" : "opacity-0"}
-        `}
-      />
-
       {/* Chão */}
       <div
         className="absolute bottom-0 left-0 w-full z-10"
@@ -41,7 +38,7 @@ export default function RoomScene({
         }}
       />
 
-      {/* Linha que separa a parede do chão */}
+      {/* Linha de separação */}
       <div
         className="absolute left-0 w-full z-20"
         style={{
@@ -51,21 +48,27 @@ export default function RoomScene({
         }}
       />
 
-      {/* Personagem */}
+      {/* Escurecimento do quarto */}
+      {lightsOff && room.id === "quarto" && (
+        <div className="absolute inset-0 z-[25] bg-[#101426]/65 pointer-events-none transition-opacity duration-500" />
+      )}
+
+      {/* Transição entre cômodos */}
       <div
-        ref={petRef}
         className={`
-          absolute rounded-2xl ${selectedSkinColor}
-          cursor-grab active:cursor-grabbing
-          shadow-2xl z-30 border-2 border-black/30
-          origin-bottom
+          absolute inset-0 bg-black z-[35]
+          pointer-events-none transition-opacity duration-300
+          ${isFading ? "opacity-100" : "opacity-0"}
         `}
-        style={{
-          width: PET_SIZE,
-          height: PET_SIZE,
-          touchAction: "none",
-        }}
-        onPointerDown={handleStartDrag}
+      />
+
+      {/* Personagem */}
+      <Pet
+        petRef={petRef}
+        selectedSkinColor={selectedSkinColor}
+        handleStartDrag={handleStartDrag}
+        onPetClick={onPetClick}
+        interactionKey={interactionKey}
       />
     </div>
   );

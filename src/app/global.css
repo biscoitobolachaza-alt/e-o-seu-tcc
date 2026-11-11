@@ -1,7 +1,10 @@
 
 @import "tailwindcss";
 
-/* Configuração geral */
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+============================== */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,12 +20,19 @@ body {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #71dc4a;
+  background: #191922;
   color: #ffffff;
   user-select: none;
 }
 
-/* Área principal do jogo */
+button {
+  font-family: inherit;
+}
+
+/* ==============================
+   ÁREA PRINCIPAL DO JOGO
+============================== */
+
 .game-container {
   width: 100%;
   height: 100dvh;
@@ -32,7 +42,10 @@ body {
   position: relative;
 }
 
-/* Área do cômodo */
+/* ==============================
+   CENA DO CÔMODO
+============================== */
+
 .room-scene {
   flex: 1;
   min-height: 0;
@@ -41,7 +54,10 @@ body {
   overflow: hidden;
 }
 
-/* Chão */
+/* ==============================
+   CHÃO
+============================== */
+
 .room-floor {
   position: absolute;
   bottom: 0;
@@ -51,7 +67,6 @@ body {
   z-index: 10;
 }
 
-/* Linha de separação */
 .floor-line {
   position: absolute;
   left: 0;
@@ -62,7 +77,10 @@ body {
   z-index: 20;
 }
 
-/* Barra inferior */
+/* ==============================
+   BARRA INFERIOR
+============================== */
+
 .game-footbar {
   width: 100%;
   height: 68px;
@@ -76,18 +94,6 @@ body {
   z-index: 40;
 }
 
-/* Botões superiores */
-.top-controls {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  z-index: 60;
-}
-
-/* Botões da Footbar */
 .footbar-button {
   width: 48px;
   height: 42px;
@@ -109,7 +115,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Nome do cômodo */
 .room-name {
   min-width: 140px;
   color: #ffffff;
@@ -120,28 +125,235 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Painéis */
+/* ==============================
+   BARRA SUPERIOR
+============================== */
+
+.top-bar {
+  position: relative;
+  width: 100%;
+  height: 72px;
+  min-height: 72px;
+  z-index: 60;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 12px;
+  border-bottom: 2px solid #111118;
+
+  box-sizing: border-box;
+}
+
+.top-bar-left,
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==============================
+   BOTÕES DE CONFIGURAÇÃO E SKIN
+============================== */
+
+.top-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 60;
+}
+
+.top-controls button {
+  transition: background 0.2s, transform 0.2s;
+}
+
+.top-controls button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px);
+}
+
+/* ==============================
+   CONTADOR DE MOEDAS
+============================== */
+
+.money-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-width: 78px;
+  padding: 8px 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+
+  background: #fff2bd;
+  color: #252525;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+}
+
+.money-icon {
+  font-size: 22px;
+}
+
+.money-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==============================
+   OVAL CENTRAL: NÍVEL E CÔMODO
+============================== */
+
+/* Compatibilidade com center-status e center-status-oval */
+.center-status,
+.center-status-oval {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 230px;
+  min-height: 58px;
+  padding: 7px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+
+  background: rgba(0, 0, 0, 0.18);
+  color: #ffffff;
+
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.center-status-level {
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.center-status-room {
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+/* Compatibilidade com o CenterStatus antigo */
+.center-status strong {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* ==============================
+   PERFIL
+============================== */
+
+.profile-container {
+  position: relative;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+
+  background: #191923;
+  color: white;
+
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.profile-popup {
+  position: absolute;
+  top: 55px;
+  right: 0;
+
+  width: 210px;
+  padding: 15px;
+
+  background: #fff;
+  color: #222;
+
+  border: 2px solid #222;
+  border-radius: 12px;
+
+  box-shadow: 0 5px 15px #0004;
+  z-index: 100;
+}
+
+.profile-popup h3 {
+  margin: 0 0 12px;
+}
+
+.profile-popup p {
+  margin: 8px 0;
+}
+
+.profile-popup button {
+  padding: 7px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #191923;
+  color: white;
+  cursor: pointer;
+}
+
+/* ==============================
+   PAINÉIS
+============================== */
+
 .settings-panel,
 .skin-panel {
   position: absolute;
   inset: 0;
   z-index: 50;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 16px;
+
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
 }
 
-/* Personagem */
+/* ==============================
+   PERSONAGEM
+============================== */
+
 .pet {
   position: absolute;
   z-index: 30;
   border: 2px solid rgba(0, 0, 0, 0.3);
   border-radius: 16px;
   cursor: grab;
-  transform-origin: bottom center;
+  transform-origin: center bottom;
   touch-action: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -150,7 +362,227 @@ body {
   cursor: grabbing;
 }
 
-/* Responsividade */
+.pet-character {
+  cursor: grab;
+  touch-action: none;
+  transform-origin: center bottom;
+  will-change: transform;
+  animation: pet-idle 2s ease-in-out infinite;
+}
+
+.pet-character:active {
+  cursor: grabbing;
+}
+
+/* ==============================
+   ANIMAÇÃO NATURAL DO PET
+============================== */
+
+@keyframes pet-idle {
+  0%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+
+  50% {
+    transform: translateY(-4px) scale(1.02, 0.99);
+  }
+}
+
+/* ==============================
+   ANIMAÇÃO SQUISH
+============================== */
+
+.pet-character.pet-squish {
+  animation: pet-squish 350ms ease-in-out;
+}
+
+@keyframes pet-squish {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+
+  20% {
+    transform: translateY(5px) scale(1.2, 0.72);
+  }
+
+  40% {
+    transform: translateY(-12px) scale(0.88, 1.16);
+  }
+
+  60% {
+    transform: translateY(2px) scale(1.08, 0.92);
+  }
+
+  80% {
+    transform: translateY(-2px) scale(0.97, 1.04);
+  }
+
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+/* ==============================
+   ACESSIBILIDADE
+============================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .pet-character {
+    animation: none;
+  }
+
+  .pet-character.pet-squish {
+    animation: none;
+  }
+}
+
+/* =====================================
+   OVAL DE UTENSÍLIOS
+===================================== */
+
+.room-tools-oval {
+  position: absolute;
+  z-index: 65;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 150px;
+  min-height: 54px;
+  padding: 6px 18px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  border-radius: 999px;
+
+  background: rgba(12, 12, 20, 0.45);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.room-tools-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.room-tool-button {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.13);
+  color: white;
+
+  font-size: 24px;
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease;
+}
+
+.room-tool-button:hover {
+  transform: scale(1.12);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.room-tool-button:active {
+  transform: scale(0.9);
+}
+
+.room-tool-message {
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* =====================================
+   PET TOTALMENTE PARADO
+===================================== */
+
+.pet-character {
+  animation: none !important;
+  transform: none;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+.pet-character.pet-squish {
+  animation: pet-squish 400ms ease-in-out !important;
+}
+
+@keyframes pet-squish {
+  0% {
+    transform: scale(1, 1);
+  }
+
+  20% {
+    transform: translateY(5px) scale(1.2, 0.72);
+  }
+
+  40% {
+    transform: translateY(-9px) scale(0.88, 1.16);
+  }
+
+  65% {
+    transform: translateY(2px) scale(1.08, 0.92);
+  }
+
+  85% {
+    transform: scale(0.97, 1.04);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* =====================================
+   RESPONSIVIDADE DOS UTENSÍLIOS
+===================================== */
+
+@media (max-width: 600px) {
+  .room-tools-oval {
+    min-width: 110px;
+    min-height: 46px;
+    padding: 4px 10px;
+  }
+
+  .room-tool-button {
+    width: 34px;
+    height: 34px;
+    font-size: 20px;
+  }
+
+  .room-tools-list {
+    gap: 7px;
+  }
+
+  .room-tool-message {
+    font-size: 9px;
+  }
+}
+
+
+/* ==============================
+   RESPONSIVIDADE
+============================== */
+
 @media (max-width: 600px) {
   .game-footbar {
     height: 64px;
@@ -168,9 +600,41 @@ body {
     font-size: 16px;
   }
 
-  .top-controls {
-    top: 8px;
-    left: 8px;
-    gap: 9px;
+  .top-bar {
+    height: 68px;
+    min-height: 68px;
+    padding: 0 6px;
+  }
+
+  .center-status,
+  .center-status-oval {
+    width: 145px;
+    min-height: 52px;
+    padding: 5px 10px;
+  }
+
+  .center-status-room,
+  .center-status strong {
+    font-size: 12px;
+  }
+
+  .center-status-level {
+    font-size: 9px;
+  }
+
+  .money-counter {
+    min-width: 65px;
+    padding: 6px 8px;
+    font-size: 13px;
+    gap: 5px;
+  }
+
+  .money-icon {
+    font-size: 17px;
+  }
+
+  .profile-button {
+    padding: 8px;
+    font-size: 12px;
   }
 }

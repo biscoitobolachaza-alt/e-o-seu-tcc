@@ -5,24 +5,28 @@ export const ROOMS = [
     name: "SALA",
     wallColor: "#71dc4a",
     floorColor: "#e8e8ec",
+    topBarColor: "#203b36",
   },
   {
     id: "quarto",
     name: "QUARTO",
     wallColor: "#9d47e0",
     floorColor: "#e8e8ec",
+    topBarColor: "#352747",
   },
   {
     id: "cozinha",
     name: "COZINHA",
     wallColor: "#f28e3b",
     floorColor: "#e8e8ec",
+    topBarColor: "#49351f",
   },
   {
     id: "banheiro",
     name: "BANHEIRO",
     wallColor: "#6ab2ff",
     floorColor: "#e8e8ec",
+    topBarColor: "#20394b",
   },
 ];
 
@@ -47,5 +51,4 @@ export const DEFAULT_CONFIG = {
 };
 
 export const FLOOR_HEIGHT = 55;
-
 export const PET_SIZE = 100;
