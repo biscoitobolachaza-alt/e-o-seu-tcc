@@ -1,0 +1,176 @@
+
+@import "tailwindcss";
+
+/* Configuração geral */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #71dc4a;
+  color: #ffffff;
+  user-select: none;
+}
+
+/* Área principal do jogo */
+.game-container {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Área do cômodo */
+.room-scene {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Chão */
+.room-floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  z-index: 10;
+}
+
+/* Linha de separação */
+.floor-line {
+  position: absolute;
+  left: 0;
+  bottom: 54px;
+  width: 100%;
+  height: 3px;
+  background: #22222d;
+  z-index: 20;
+}
+
+/* Barra inferior */
+.game-footbar {
+  width: 100%;
+  height: 68px;
+  min-height: 68px;
+  background: #191922;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 40;
+}
+
+/* Botões superiores */
+.top-controls {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 60;
+}
+
+/* Botões da Footbar */
+.footbar-button {
+  width: 48px;
+  height: 42px;
+  border-radius: 7px;
+  background: #454550;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-size: 34px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.footbar-button:hover {
+  background: #606070;
+  transform: scale(1.05);
+}
+
+/* Nome do cômodo */
+.room-name {
+  min-width: 140px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Painéis */
+.settings-panel,
+.skin-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* Personagem */
+.pet {
+  position: absolute;
+  z-index: 30;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  cursor: grab;
+  transform-origin: bottom center;
+  touch-action: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.pet:active {
+  cursor: grabbing;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .game-footbar {
+    height: 64px;
+    min-height: 64px;
+  }
+
+  .footbar-button {
+    width: 42px;
+    height: 38px;
+    font-size: 30px;
+  }
+
+  .room-name {
+    min-width: 100px;
+    font-size: 16px;
+  }
+
+  .top-controls {
+    top: 8px;
+    left: 8px;
+    gap: 9px;
+  }
+}
